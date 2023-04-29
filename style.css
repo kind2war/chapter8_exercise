@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  width: 960px; /*この数値は見本参照*/
+  margin: 50px auto;
+}
+
+/*item-list と box-listの間を設定する*/
+.item-list {
+  margin-bottom: 50px;
+}
+
+.item {
+  padding: 20px;
+  list-style: none; /*頭に「・」をつけない*/
+}
+
+/*itemのうち、奇数番目の背景色を変える*/
+.item:nth-child(odd) {
+  background-color: #eee;
+}
+
+/*boxを折り返して並べる*/
+.box-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/*box共通のスタイルを設定*/
+.box {
+  background-color: #ffd700;
+  width:30%;
+  height: 200px;
+  margin-right: 5%;
+  margin-bottom: 40px;
+}
+
+/*特定の子要素box(今回は、ひとつめと５つめ）について設定*/
+/*これが動いていないのはなぜだろう？？*/
+.box:first-child, .box:nth-child(5), .box:last-child {
+  background-color: #ff8c00;
+}
+/*style.cssをPreviewしたところ、エラーの原因が判明。
+.box:last-childと{のあいだのスペースが全角になっていたことが原因。
+なおPreviewすると、日本語と全角は文字化けして表示される。*/
+
+.box:nth-child(3n) {
+  margin-right: 0;
+}
+
+.box:nth-last-child(-n + 3) {
+  margin-bottom: 0;
+}
